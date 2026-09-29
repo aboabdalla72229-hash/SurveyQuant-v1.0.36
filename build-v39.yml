@@ -1,6 +1,9 @@
-name: Build SurveyQuant v1.0.36
+name: Build SurveyQuant v1.0.39
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -14,9 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract SurveyQuant project
+      - name: Extract SurveyQuant v1.0.39
         run: |
-          unzip -o SurveyQuantAndroid_v1.0.36_GITHUB_READY.zip
+          unzip -o SurveyQuantAndroid_v1.0.39_EXPORT_NOTIFICATIONS.zip
           cp -r SurveyQuantAndroid/. .
 
       - name: Setup Java 17
@@ -36,6 +39,6 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: SurveyQuant-v1.0.36-APK
+          name: SurveyQuant-v1.0.39-APK
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
